@@ -1,12 +1,12 @@
 <?php 
     //ENTER THE RELEVANT INFO BELOW
-    $mysqlUserName      = "u280714611_course";
-    $mysqlPassword      = '("Dahab2021@LMS");';
-    $mysqlHostName      = "sql418.main-hosting.eu";
-    $DbName             = "u280714611_course";
-    $backup_name        = "tt.sql";
+    $mysqlUserName      = "hithr_d685w";
+    $mysqlPassword      = "Rn68Mi5%ub*&";
+    $mysqlHostName      = "psmysql622106.dreamhostps.com";
+    $DbName             = "hithr685";
+    $backup_name        = "toto.sql";
     // $tables             = "users";
-    $tables             =array("torm_students","com_students");
+    $tables             =array("torm_students","com_students","ads");
 
 
    //or add 5th parameter(array) of specific tables:    array("mytable1","mytable2","mytable3") for multiple tables

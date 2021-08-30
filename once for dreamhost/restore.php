@@ -13,6 +13,19 @@ $mysqlDatabase = 'course';
 // Connect to MySQL server
 $link = mysqli_connect($mysqlHost, $mysqlUser, $mysqlPassword, $mysqlDatabase) or die('Error connecting to MySQL Database: ' . mysqli_error());
 
+$mysqli = new mysqli($mysqlHost,$mysqlUser,$mysqlPassword,$mysqlDatabase); 
+$mysqli->select_db($mysqlDatabase); 
+
+// mysql_select_db($mysqlDatabase, $link);
+// echo $mysqli->query('SHOW TABLES'); 
+$delete= $mysqli->query("DROP TABLE com_students");
+// $delete= mysql_query("DROP TABLE com_students");
+if($delete !== FALSE)
+{
+   echo("This table has been deleted. oba7");
+}else{
+   echo("This table has not been deleted.");
+}
 
 $tempLine = '';
 // Read in the full file

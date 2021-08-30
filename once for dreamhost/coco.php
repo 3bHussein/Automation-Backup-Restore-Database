@@ -5,18 +5,16 @@
     $mysqlHostName      = "psmysql622106.dreamhostps.com";
     $DbName             = "hithr685";
     $backup_name        = "toto.sql";
-    // $tables             = "users";
-    $tables             =array("torm_students","ads");
+     $tables             = "users";
+    // $tables             =array("torm_students","com_students","ads");
 
-// "com_students",
    //or add 5th parameter(array) of specific tables:    array("mytable1","mytable2","mytable3") for multiple tables
 
-     Export_Database($mysqlHostName,$mysqlUserName,$mysqlPassword,$DbName,  $tables, $backup_name );
+    Export_Database($mysqlHostName,$mysqlUserName,$mysqlPassword,$DbName,  $tables=false, $backup_name=false );
 
-    function Export_Database($host,$user,$pass,$name,  $tables, $backup_name)
+    function Export_Database($host,$user,$pass,$name,  $tables=false, $backup_name=false )
     {
         $mysqli = new mysqli($host,$user,$pass,$name); 
-         
         $mysqli->select_db($name); 
         $mysqli->query("SET NAMES 'utf8'");
 
@@ -25,10 +23,10 @@
         { 
             $target_tables[] = $row[0]; 
         }   
-       
-        
+        if($tables !== false) 
+        { 
             $target_tables = array_intersect( $target_tables, $tables); 
-        
+        }
         foreach($target_tables as $table)
         {
             $result         =   $mysqli->query('SELECT * FROM '.$table);  
@@ -84,7 +82,4 @@
         header("Content-disposition: attachment; filename=\"".$backup_name."\"");  
         echo $content; exit;
     }
-
-
-
 ?>
